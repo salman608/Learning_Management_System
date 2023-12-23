@@ -28,9 +28,26 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+        $url = '';
+        if ($request->user()->role === 'admin') {
+            $url = 'admin/dashboard';
+        } elseif ($request->user()->role === 'instructor') {
+            $url = 'instructor/dashboard';
+        } elseif ($request->user()->role === 'user') {
+            $url = '/dashboard';
+        }
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect()->intended($url);
     }
+
+    // public function store(LoginRequest $request): RedirectResponse
+    // {
+    //     $request->authenticate();
+
+    //     $request->session()->regenerate();
+
+    //     return redirect()->intended(RouteServiceProvider::HOME);
+    // }
 
     /**
      * Destroy an authenticated session.
