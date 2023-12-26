@@ -5,7 +5,8 @@
                 <div class="row align-items-center">
                     <div class="col-lg-12">
                         <div class="logo-box logo--box">
-                            <a href="index.html" class="logo"><img src="images/logo.png" alt="logo"></a>
+                            <a href="index.html" class="logo"><img src="{{ asset('frontend/images/logo.png') }}"
+                                    alt="logo"></a>
                             <div class="user-btn-action">
                                 <div class="search-menu-toggle icon-element icon-element-sm shadow-sm mr-2"
                                     data-toggle="tooltip" data-placement="top" title="Search">
@@ -31,111 +32,8 @@
                             </form>
                             <div class="nav-right-button d-flex align-items-center">
                                 <div class="user-action-wrap d-flex align-items-center">
-                                    <div class="shop-cart course-cart pr-3 mr-3 border-right border-right-gray">
-                                        <ul>
-                                            <li>
-                                                <p class="shop-cart-btn d-flex align-items-center fs-16">
-                                                    My Courses
-                                                    <span class="la la-angle-down fs-13 ml-1"></span>
-                                                </p>
-                                                <ul class="cart-dropdown-menu after-none">
-                                                    <li class="media media-card">
-                                                        <a href="lesson-details.html" class="media-img">
-                                                            <img class="mr-3" src="images/small-img-3.jpg"
-                                                                alt="Course thumbnail image">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h5><a href="lesson-details.html">The Complete
-                                                                    JavaScript Course 2021: From Zero to Expert!</a>
-                                                            </h5>
-                                                            <div class="skillbar-box pt-3">
-                                                                <div class="skillbar skillbar-skillbar"
-                                                                    data-percent="36%">
-                                                                    <div class="skillbar-bar skillbar--bar bg-1">
-                                                                    </div>
-                                                                </div><!-- End Skill Bar -->
-                                                            </div><!-- End skillbar-box -->
-                                                        </div>
-                                                    </li>
-                                                    <li class="media media-card">
-                                                        <a href="lesson-details.html" class="media-img">
-                                                            <img class="mr-3" src="images/small-img-4.jpg"
-                                                                alt="Course thumbnail image">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h5><a href="lesson-details.html">The Complete
-                                                                    JavaScript Course 2021: From Zero to Expert!</a>
-                                                            </h5>
-                                                            <div class="skillbar-box pt-3">
-                                                                <div class="skillbar skillbar-skillbar"
-                                                                    data-percent="77%">
-                                                                    <div class="skillbar-bar skillbar--bar bg-1">
-                                                                    </div>
-                                                                </div><!-- End Skill Bar -->
-                                                            </div><!-- End skillbar-box -->
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <a href="my-courses.html" class="btn theme-btn w-100">Got
-                                                            to my course <i class="la la-arrow-right icon ml-1"></i></a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div><!-- end course-cart -->
-                                    <div class="shop-cart pr-3 mr-3 border-right border-right-gray">
-                                        <ul>
-                                            <li>
-                                                <p class="shop-cart-btn d-flex align-items-center">
-                                                    <i class="la la-shopping-cart fs-22"></i>
-                                                    <span class="dot-status bg-1"></span>
-                                                </p>
-                                                <ul class="cart-dropdown-menu after-none">
-                                                    <li class="media media-card">
-                                                        <a href="shopping-cart.html" class="media-img">
-                                                            <img class="mr-3" src="images/small-img.jpg"
-                                                                alt="Cart image">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h5><a href="shopping-cart.html">The Complete
-                                                                    JavaScript Course 2021: From Zero to Expert!</a>
-                                                            </h5>
-                                                            <span class="d-block lh-18 py-1">Kamran Ahmed</span>
-                                                            <p class="text-black font-weight-semi-bold lh-18">
-                                                                $12.99 <span class="before-price fs-14">$129.99</span>
-                                                            </p>
-                                                        </div>
-                                                    </li>
-                                                    <li class="media media-card">
-                                                        <a href="shopping-cart.html" class="media-img">
-                                                            <img class="mr-3" src="images/small-img.jpg"
-                                                                alt="Cart image">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h5><a href="shopping-cart.html">The Complete
-                                                                    JavaScript Course 2021: From Zero to Expert!</a>
-                                                            </h5>
-                                                            <span class="d-block lh-18 py-1">Kamran Ahmed</span>
-                                                            <p class="text-black font-weight-semi-bold lh-18">
-                                                                $12.99 <span class="before-price fs-14">$129.99</span>
-                                                            </p>
-                                                        </div>
-                                                    </li>
-                                                    <li class="media media-card">
-                                                        <div class="media-body fs-16">
-                                                            <p class="text-black font-weight-semi-bold lh-18">
-                                                                Total: <span class="cart-total">$12.99</span> <span
-                                                                    class="before-price fs-14">$129.99</span></p>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <a href="shopping-cart.html" class="btn theme-btn w-100">Got
-                                                            to cart <i class="la la-arrow-right icon ml-1"></i></a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div><!-- end shop-cart -->
+
+
                                     <div class="shop-cart wishlist-cart pr-3 mr-3 border-right border-right-gray">
                                         <ul>
                                             <li>
@@ -267,8 +165,9 @@
                                             <li>
                                                 <div class="shop-cart-btn">
                                                     <div class="avatar-xs">
-                                                        <img class="rounded-full img-fluid"
-                                                            src="images/small-avatar-1.jpg" alt="Avatar image">
+                                                        <img class="rounded-full img-fluid p-1 bg-primary"
+                                                            src="{{ !empty($profileData->photo) ? url('upload/admin_images/' . $profileData->photo) : url('upload/no_image.jpg') }}"
+                                                            alt="Avatar image">
                                                     </div>
                                                     <span class="dot-status bg-1"></span>
                                                 </div>
@@ -278,13 +177,15 @@
                                                         <a href="teacher-detail.html"
                                                             class="avatar-sm flex-shrink-0 d-block">
                                                             <img class="rounded-full img-fluid"
-                                                                src="images/small-avatar-1.jpg" alt="Avatar image">
+                                                                src="{{ !empty($profileData->photo) ? url('upload/admin_images/' . $profileData->photo) : url('upload/no_image.jpg') }}"
+                                                                alt="Avatar image">
                                                         </a>
                                                         <div class="ml-2">
-                                                            <h4><a href="teacher-detail.html" class="text-black">Alex
-                                                                    Smith</a></h4>
+                                                            <h4><a href="teacher-detail.html"
+                                                                    class="text-black">{{ $profileData->name }}</a>
+                                                            </h4>
                                                             <span
-                                                                class="d-block fs-14 lh-20">alexsmith@example.com</span>
+                                                                class="d-block fs-14 lh-20">{{ $profileData->email }}</span>
                                                         </div>
                                                     </li>
                                                     <li>
@@ -333,40 +234,7 @@
                                                     </li>
                                                     <li>
                                                         <ul class="generic-list-item">
-                                                            <li>
-                                                                <a href="my-courses.html">
-                                                                    <i class="la la-file-video-o mr-1"></i> My
-                                                                    courses
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="shopping-cart.html">
-                                                                    <i class="la la-shopping-basket mr-1"></i> My
-                                                                    cart
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="my-courses.html">
-                                                                    <i class="la la-heart-o mr-1"></i> My wishlist
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <div class="section-block"></div>
-                                                            </li>
-                                                            <li>
-                                                                <a href="dashboard.html">
-                                                                    <i class="la la-bell mr-1"></i> Notifications
-                                                                    <span
-                                                                        class="badge bg-info text-white ml-2 p-1">9+</span>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="dashboard-message.html">
-                                                                    <i class="la la-envelope mr-1"></i> Messages
-                                                                    <span
-                                                                        class="badge bg-info text-white ml-2 p-1">12+</span>
-                                                                </a>
-                                                            </li>
+
                                                             <li>
                                                                 <div class="section-block"></div>
                                                             </li>
