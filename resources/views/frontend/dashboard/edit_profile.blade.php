@@ -1,18 +1,34 @@
 @extends('frontend.dashboard.user_dashboard')
 @section('userdashboard')
+    <div class="breadcrumb-content d-flex flex-wrap align-items-center justify-content-between mb-5">
+        <div class="media media-card align-items-center">
+            <div class="media-img media--img media-img-md rounded-full">
+                <img class="rounded-full p-1 bg-dark"
+                    src="{{ !empty($profileData->photo) ? url('upload/user_images/' . $profileData->photo) : url('upload/no_image.jpg') }}"
+                    alt="Student thumbnail image">
+            </div>
+            <div class="media-body">
+                <h2 class="section__title fs-30">Hello,{{ $profileData->name }}</h2>
+
+            </div><!-- end media-body -->
+        </div><!-- end media -->
+
+    </div><!-- end breadcrumb-content -->
+
     <div class="tab-pane fade show active" id="edit-profile" role="tabpanel" aria-labelledby="edit-profile-tab">
         <div class="setting-body">
-            <h3 class="fs-17 font-weight-semi-bold pb-4">Edit Profile</h3>
-            <form method="post" action="{{ route('user.profile.update') }}" enctype="multipart/form-data" class="row pt-40px">
+            <h3 class="fs-17 font-weight-semi-bold pb-4">Edit User Profile</h3>
+            <form method="post" action="{{ route('user.profile.update') }}" enctype="multipart/form-data"
+                class="row pt-40px">
                 @csrf
                 <div class="media media-card align-items-center">
-                    <div class="media-img media-img-lg mr-4 bg-gray">
+                    {{-- <div class="media-img media-img-lg mr-4 bg-gray">
                         <img class="mr-3"
                             src="{{ !empty($profileData->photo) ? url('upload/user_images/' . $profileData->photo) : url('upload/no_image.jpg') }}"
                             alt="avatar image">
-                    </div>
+                    </div> --}}
                     <div class="media-body">
-                        <div class="file-upload-wrap file-upload-wrap-2">
+                        <div class="file-upload-wrap file-upload-wrap-1">
                             <input type="file" name="photo" class="multi file-upload-input with-preview" multiple>
                             <span class="file-upload-text"><i class="la la-photo mr-2"></i>Upload a Photo</span>
                         </div><!-- file-upload-wrap -->
