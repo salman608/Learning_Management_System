@@ -55,5 +55,12 @@ class UserController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/login');
+    } //end
+
+    public function UserChangePassword()
+    {
+        $id = Auth::user()->id;
+        $profileData = User::find($id);
+        return view('frontend.dashboard.change_password', compact('profileData'));
     }
 }
