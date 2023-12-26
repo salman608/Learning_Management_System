@@ -15,7 +15,7 @@
             </div>
             <div class="ms-auto">
                 <div class="btn-group">
-                    <a href="" class="btn btn-primary">+ Add Category</a>
+                    <a href="{{ route('add.category') }}" class="btn btn-primary">+ Add Category</a>
                 </div>
             </div>
         </div>
@@ -28,26 +28,29 @@
                     <table id="example" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
+                                <th>SL</th>
+                                <th>Category Image</th>
+                                <th>Category Name</th>
+                                <th>Action</th>
+
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($category as $key => $item)
+                                <tr>
+                                    <td>{{ $key + 1 }}</td>
+                                    <td>
+                                        <img src="{{ asset($item->image) }}" alt="" width="70" height="50">
+                                    </td>
+                                    <td>{{ $item->category_name }}</td>
+                                    <td>
+                                        <a href="" class="btn btn-info">Edit</a>
+                                        <a href="" class="btn btn-danger">Delete</a>
+                                    </td>
 
+                                </tr>
+                            @endforeach
 
-
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
 
                     </table>
                 </div>
