@@ -1,8 +1,8 @@
 @extends('frontend.master')
 @section('home')
     <!-- ================================
-                                                    START BREADCRUMB AREA
-                                                ================================= -->
+                                                                            START BREADCRUMB AREA
+                                                                        ================================= -->
     <section class="breadcrumb-area section-padding img-bg-2">
         <div class="overlay"></div>
         <div class="container">
@@ -20,12 +20,12 @@
         </div><!-- end container -->
     </section><!-- end breadcrumb-area -->
     <!-- ================================
-                                                    END BREADCRUMB AREA
-                                                ================================= -->
+                                                                            END BREADCRUMB AREA
+                                                                        ================================= -->
 
     <!-- ================================
-                                                       START CONTACT AREA
-                                                ================================= -->
+                                                                               START CONTACT AREA
+                                                                        ================================= -->
     <section class="contact-area section--padding position-relative">
         <span class="ring-shape ring-shape-1"></span>
         <span class="ring-shape ring-shape-2"></span>
@@ -61,7 +61,7 @@
                                             type="email" name="email" placeholder="Email or Username">
                                         <span class="la la-user input-icon"></span>
                                         @error('email')
-                                            {{ $message }}
+                                            <span class="text-danger"> {{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div><!-- end input-box -->
@@ -72,9 +72,7 @@
                                         <input
                                             class="form-control form--control password-field @error('password') @enderror"
                                             type="password" name="password" id="password" placeholder="Password">
-                                        @error('password')
-                                            {{ $message }}
-                                        @enderror
+
                                         <div class="input-group-append">
                                             <button class="btn theme-btn theme-btn-transparent toggle-password"
                                                 type="button">
@@ -93,6 +91,11 @@
                                                 </svg>
                                             </button>
                                         </div>
+                                        <br>
+                                        <br>
+                                        @error('password')
+                                            <span class="text-danger"> {{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div><!-- end input-box -->
                                 <div class="btn-box">
@@ -117,7 +120,4 @@
             </div><!-- end row -->
         </div><!-- end container -->
     </section><!-- end contact-area -->
-    <!-- ================================
-                                                       END CONTACT AREA
-                                                ================================= -->
 @endsection

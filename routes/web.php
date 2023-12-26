@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -44,7 +45,10 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
     Route::get('/admin/change/password', [AdminController::class, 'AdminChangePassword'])->name('admin.change.password');
     Route::post('/admin/password/update', [AdminController::class, 'AdminPasswordUpdate'])->name('admin.password.update');
 
-    // Route::get('/admin/logout', [AdminController::class, 'AdminLogin'])->name('admin.login');
+    //  All  Category route
+    Route::controller(CategoryController::class)->group(function () {
+        Route::get('all/category', 'AllCategory')->name('all.category');
+    });
 }); //end admin middleware
 
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
