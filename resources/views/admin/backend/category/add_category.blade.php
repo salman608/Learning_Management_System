@@ -25,7 +25,9 @@
         <div class="card">
             <div class="card-body p-4">
 
-                <form id="myForm" action="" enctype="multipart/form-data" class="row g-3">
+                <form id="myForm" action="{{ route('store.category') }}" method="POST" enctype="multipart/form-data"
+                    class="row g-3">
+                    @csrf
                     <div class="form-group col-md-12">
                         <label for="input1" class="form-label">Category Name</label>
                         <input type="text" name="category_name" class="form-control" id="category_name"
