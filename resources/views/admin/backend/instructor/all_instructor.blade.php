@@ -1,5 +1,13 @@
 @extends('admin.admin_dashboard')
 @section('admin_content')
+    <style>
+        .large-checkbox {
+            transform: scale(1.5);
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <div class="page-content">
         <!--breadcrumb-->
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
@@ -50,10 +58,12 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{ route('edit.category', $item->id) }}"
-                                            class="btn btn-sm btn-info px-5">Edit</a>
-                                        <a href="{{ route('delete.category', $item->id) }}"
-                                            class="btn btn-sm btn-danger px-5" id="delete">Delete</a>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input status-toggle large-checkbox" type="checkbox"
+                                                id="flexSwitchCheckChecked" data-user-id="{{ $item->id }}"
+                                                {{ $item->status ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+                                        </div>
                                     </td>
 
                                 </tr>
@@ -64,6 +74,32 @@
                 </div>
             </div>
         </div>
-
     </div>
+
+    <script>
+        $(document).ready(function() {
+            $('.status-toggle').on('change', function() {
+                var userId = $(this).data('user-id');
+                var isChecked = $(this).is(':checked');
+
+                //send an ajax request
+                $.ajax({
+                    url: "{{ route('update.user.status') }}",
+                    method: "POST",
+                    data: {
+                        user_id: userId,
+                        is_checked: isChecked ? 1 : 0,
+                        _token: "{{ csrf_token() }}"
+                    },
+
+                    success: function(response) {
+                        toastr.success(response.message);
+                    },
+                    error: function() {
+
+                    }
+                });
+            })
+        })
+    </script>
 @endsection
