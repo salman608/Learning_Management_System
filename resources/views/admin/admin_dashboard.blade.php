@@ -256,6 +256,8 @@
     <script src="{{ asset('backend/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
     <script src="{{ asset('backend/assets/plugins/chartjs/js/chart.js') }}"></script>
     <script src="{{ asset('backend/assets/js/index.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/validate.min.js') }}"></script>
+
     <!--app JS-->
     <script src="{{ asset('backend/assets/js/app.js') }}"></script>
     <script>
