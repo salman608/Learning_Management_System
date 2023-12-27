@@ -15,7 +15,7 @@
             </div>
             <div class="ms-auto">
                 <div class="btn-group">
-                    <a href="{{ route('add.category') }}" class="btn btn-primary">+ Add SubCategory</a>
+                    <a href="{{ route('add.subcategory') }}" class="btn btn-primary">+ Add SubCategory</a>
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
                             @foreach ($subcategory as $key => $item)
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
-                                    <td>{{ $item->category_id }}</td>
+                                    <td>{{ $item['category']['category_name'] }}</td>
                                     <td>{{ $item->subcategory_name }}</td>
                                     <td>
                                         <a href="{{ route('edit.category', $item->id) }}"

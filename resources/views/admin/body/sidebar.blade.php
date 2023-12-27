@@ -33,7 +33,7 @@
                 <li> <a href="{{ route('all.category') }}"><i class='bx bx-radio-circle'></i>All Category</a>
                 </li>
                 <li> <a href="{{ route('all.subcategory') }}"><i class='bx bx-radio-circle'></i>All SubCategory
-                        Details</a>
+                    </a>
                 </li>
 
             </ul>
