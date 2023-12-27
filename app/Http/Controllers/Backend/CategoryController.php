@@ -79,5 +79,19 @@ class CategoryController extends Controller
             );
             return redirect()->route('all.category')->with($notification);
         }
+    } //end
+
+    public function DeleteCategory($id)
+    {
+        $item = Category::find($id);
+        $img = $item->image;
+        unlink($img);
+        Category::find($id)->delete();
+
+        $notification = array(
+            'message' => "Category Deleted Successfull!",
+            'alert-type' => "success"
+        );
+        return redirect()->back()->with($notification);
     }
 }
