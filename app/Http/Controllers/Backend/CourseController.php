@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Course;
 use App\Models\Course_goal;
+use App\Models\CourseSection;
 use App\Models\SubCategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -267,4 +268,19 @@ class CourseController extends Controller
         $course = Course::find($id);
         return view('instructor.courses.section.add_course_lecture', compact('course'));
     }
+
+    public function AddCourseSection(Request $request)
+    {
+        $cid = $request->id;
+        CourseSection::insert([
+            'course_id' => $cid,
+            'section_title' => $request->section_title,
+        ]);
+
+        $notification = array(
+            'message' => "Section Title Inserted Successfully!",
+            'alert-type' => "success"
+        );
+        return redirect()->back()->with($notification);
+    } //end
 }

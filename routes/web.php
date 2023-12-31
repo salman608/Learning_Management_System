@@ -105,6 +105,7 @@ Route::middleware(['auth', 'roles:instructor'])->group(function () {
     //  All  Course Lecture route
     Route::controller(CourseController::class)->group(function () {
         Route::get('add/course/lecture/{id}', 'AddCourseLecture')->name('add.course.lecture');
+        Route::post('add/course/section', 'AddCourseSection')->name('add.course.section');
     });
 }); //end admin middleware
 Route::get('/instructor/login', [InstructorController::class, 'InstructorLogin'])->name('instructor.login');
