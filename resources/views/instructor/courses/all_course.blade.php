@@ -52,7 +52,7 @@
                                     <td>{{ $item->discount_price }}</td>
                                     <td>
                                         <a href="{{ route('edit.course', $item->id) }}" class="btn btn-sm btn-info">Edit</a>
-                                        <a href="{{ route('delete.category', $item->id) }}" class="btn btn-sm btn-danger"
+                                        <a href="{{ route('delete.course', $item->id) }}" class="btn btn-sm btn-danger"
                                             id="delete">Delete</a>
                                     </td>
 
