@@ -47,12 +47,11 @@
                                             height="50">
                                     </td>
                                     <td>{{ $item->course_name }}</td>
-                                    <td>{{ $item->category_id }}</td>
+                                    <td>{{ $item['category']['category_name'] }}</td>
                                     <td>{{ $item->selling_price }}</td>
                                     <td>{{ $item->discount_price }}</td>
                                     <td>
-                                        <a href="{{ route('edit.category', $item->id) }}"
-                                            class="btn btn-sm btn-info">Edit</a>
+                                        <a href="{{ route('edit.course', $item->id) }}" class="btn btn-sm btn-info">Edit</a>
                                         <a href="{{ route('delete.category', $item->id) }}" class="btn btn-sm btn-danger"
                                             id="delete">Delete</a>
                                     </td>

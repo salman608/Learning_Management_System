@@ -108,5 +108,13 @@ class CourseController extends Controller
             'alert-type' => "success"
         );
         return redirect()->route('all.course')->with($notification);
+    } //end
+
+    public function EditCourse($id)
+    {
+        $course = Course::find($id);
+        $categories = Category::latest()->get();
+        $subcategories = SubCategory::latest()->get();
+        return view('instructor.courses.edit_course', compact('course', 'categories', 'subcategories'));
     }
 }
