@@ -116,5 +116,48 @@ class CourseController extends Controller
         $categories = Category::latest()->get();
         $subcategories = SubCategory::latest()->get();
         return view('instructor.courses.edit_course', compact('course', 'categories', 'subcategories'));
-    }
+    } //end
+
+
+    public function UpdateCourse(Request $request)
+    {
+
+
+        $course_id = $request->course_id;
+
+
+        Course::find($course_id)->update([
+            'category_id' => $request->category_id,
+            'subcategory_id' => $request->subcategory_id,
+            'instructor_id' => Auth::user()->id,
+            'course_title' => $request->course_title,
+            'course_name' => $request->course_name,
+            'course_name_slug' => strtolower(str_replace('', '-', $request->course_name)),
+
+            'description' => $request->description,
+            'lavel' => $request->lavel,
+            'duration' => $request->duration,
+            'resources' => $request->resources,
+            'cirtificate' => $request->cirtificate,
+
+            'selling_price' => $request->selling_price,
+            'discount_price' => $request->discount_price,
+            'prerequisites' => $request->prerequisites,
+            'bestseller' => $request->bestseller,
+            'featured' => $request->featured,
+            'highestrated' => $request->highestrated,
+
+        ]);
+
+
+
+        $notification = array(
+            'message' => "Course Updated Successfully!",
+            'alert-type' => "success"
+        );
+        return redirect()->route('all.course')->with($notification);
+    } //end
+
+
+
 }

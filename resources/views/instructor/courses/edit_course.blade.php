@@ -27,9 +27,10 @@
 
             <div class="card-body p-4">
 
-                <form id="myForm" action="{{ route('store.course') }}" method="POST" enctype="multipart/form-data"
+                <form id="myForm" action="{{ route('update.course') }}" method="POST" enctype="multipart/form-data"
                     class="row g-3">
                     @csrf
+                    <input type="hidden" name="course_id" value="{{ $course->id }}">
                     <div class="form-group col-md-6">
                         <label for="input1" class="form-label">Course Name</label>
                         <input type="text" name="course_name" class="form-control" value="{{ $course->course_name }}">
