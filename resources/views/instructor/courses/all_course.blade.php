@@ -9,13 +9,13 @@
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">All Course</li>
+                        <li class="breadcrumb-item active " aria-current="page">All Course</li>
                     </ol>
                 </nav>
             </div>
             <div class="ms-auto">
                 <div class="btn-group">
-                    <a href="{{ route('add.course') }}" class="btn btn-primary">+ Add Course</a>
+                    <a href="{{ route('add.course') }}" class="btn btn-primary px-5">+ Add Course</a>
                 </div>
             </div>
         </div>
@@ -51,9 +51,12 @@
                                     <td>{{ $item->selling_price }}</td>
                                     <td>{{ $item->discount_price }}</td>
                                     <td>
-                                        <a href="{{ route('edit.course', $item->id) }}" class="btn btn-sm btn-info">Edit</a>
+                                        <a href="{{ route('edit.course', $item->id) }}" class="btn btn-sm btn-info"><i
+                                                class="lni lni-pencil" title="edit"></i></a>
                                         <a href="{{ route('delete.course', $item->id) }}" class="btn btn-sm btn-danger"
-                                            id="delete">Delete</a>
+                                            id="delete" title="delete"><i class="lni lni-trash"></i></a>
+                                        <a href="{{ route('add.course.lecture', $item->id) }}"
+                                            class="btn btn-sm btn-warning" title="lecture"><i class="lni lni-list"></i></a>
                                     </td>
 
                                 </tr>
