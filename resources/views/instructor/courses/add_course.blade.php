@@ -23,38 +23,40 @@
 
         <hr />
         <div class="card">
+
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    <div>{{ $error }}</div>
+                @endforeach
+            @endif
             <div class="card-body p-4">
 
-                <form id="myForm" action="{{ route('store.category') }}" method="POST" enctype="multipart/form-data"
+                <form id="myForm" action="{{ route('store.course') }}" method="POST" enctype="multipart/form-data"
                     class="row g-3">
                     @csrf
                     <div class="form-group col-md-6">
                         <label for="input1" class="form-label">Course Name</label>
-                        <input type="text" name="course_name" class="form-control" id="course_name"
-                            placeholder="Category Name">
+                        <input type="text" name="course_name" class="form-control" placeholder="Category Name">
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="input1" class="form-label">Course Title</label>
-                        <input type="text" name="course_title" class="form-control" id="course_title"
-                            placeholder="course title">
+                        <input type="text" name="course_title" class="form-control" placeholder="course title">
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="image" class="form-label">Course Image</label>
-                        <input type="file" name="image" class="form-control" id="image" </div>
+                        <input type="file" name="course_image" class="form-control" id="image" </div>
                     </div>
                     <div class="col-md-2">
                         <label for="input2" class="form-label"></label>
-                        <img id="showImage"
-                            src="{{ !empty($profileData->photo) ? url('upload/admin_images/' . $profileData->photo) : url('upload/no_image.jpg') }}"
-                            alt="Admin" class="p-1 bg-dark" width="100">
+                        <img id="showImage" src="{{ url('upload/no_image.jpg') }}" alt="Admin" class="p-1 bg-dark"
+                            width="100">
                     </div>
 
                     <div class="form-group col-md-4">
                         <label for="input1" class="form-label">Course Intro Video</label>
-                        <input type="file" name="video" class="form-control" id="video"
-                            placeholder="Category title" accept="video/mp4,video/webm">
+                        <input type="file" name="video" class="form-control" accept="video/mp4,v ideo/webm">
                     </div>
 
                     <div class="form-group col-md-6">
@@ -77,7 +79,7 @@
 
                     <div class="form-group col-md-6">
                         <label for="input19" class="form-label">Certificate Available</label>
-                        <select id="input19" class="form-select" name="certificate">
+                        <select id="input19" class="form-select" name="cirtificate">
                             <option selected="" disabled>Choose Course Certificate...</option>
                             <option value="Yes">Yes</option>
                             <option value="No">No</option>
@@ -86,7 +88,7 @@
 
                     <div class="form-group col-md-6">
                         <label for="input19" class="form-label">Course Label</label>
-                        <select id="input19" class="form-select" name="label">
+                        <select id="input19" class="form-select" name="lavel">
                             <option selected="" disabled>Choose Course Label...</option>
                             <option value="Begginer">Begginer</option>
                             <option value="Middle">Middle</option>
@@ -253,21 +255,89 @@
         $(document).ready(function() {
             $('#myForm').validate({
                 rules: {
-                    category_name: {
+                    course_name: {
+                        required: true,
+                    },
+                    course_title: {
                         required: true,
                     },
 
-                    image: {
+                    course_image: {
                         required: true,
                     },
+                    // video: {
+                    //     required: true,
+                    // },
+                    category_id: {
+                        required: true,
+                    },
+                    selling_price: {
+                        required: true,
+                    },
+                    discount_price: {
+                        required: true,
+                    },
+                    duration: {
+                        required: true,
+                    },
+                    resources: {
+                        required: true,
+                    },
+                    prerequisites: {
+                        required: true,
+                    },
+                    description: {
+                        required: true,
+                    },
+                    cirtificate: {
+                        required: true,
+                    },
+                    lavel: {
+                        required: true,
+                    },
+
 
                 },
                 messages: {
-                    category_name: {
-                        required: 'Please Enter Category Name',
+                    course_name: {
+                        required: 'Please Enter Course Name',
                     },
-                    image: {
-                        required: 'Please Enter Category Image',
+                    course_title: {
+                        required: 'Please Enter Course Title',
+                    },
+                    course_image: {
+                        required: 'Please Enter Course Image',
+                    },
+
+                    // video: {
+                    //     required: 'Please Upload Course video',
+                    // },
+                    category_id: {
+                        required: 'Please select category',
+                    },
+                    selling_price: {
+                        required: 'Please Enter Course Price',
+                    },
+                    discount_price: {
+                        required: 'Please Enter Course Discount',
+                    },
+                    duration: {
+                        required: 'Please Enter Course Duration',
+                    },
+                    resources: {
+                        required: 'Please Enter Course Resources',
+                    },
+                    prerequisites: {
+                        required: 'Please Enter Course Pre require',
+                    },
+                    description: {
+                        required: 'Please Enter Course Description',
+                    },
+                    cirtificate: {
+                        required: 'Please Enter Course Certificate',
+                    },
+                    lavel: {
+                        required: 'Please Enter Course Level',
                     },
 
 
