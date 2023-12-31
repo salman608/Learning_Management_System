@@ -160,6 +160,44 @@
 
     </div>
 
+    {{-- //Start Main Course Image Update --}}
+    <div class="page-content">
+        <div class="card">
+            <div class="card-body">
+                <form action="{{ route('update.course.image') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="id" value="{{ $course->id }}">
+                    <input type="hidden" name="old_image" value="{{ $course->course_image }}">
+                    <div class="row">
+                        <div class="form-group col-md-10">
+                            <label for="image" class="form-label">Course Image</label>
+                            <input type="file" name="course_image" class="form-control" id="image" </div>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="input2" class="form-label"></label>
+                            <img id="showImage" src="{{ asset($course->course_image) }}" alt="Admin"
+                                class="p-1 bg-dark" width="100">
+                        </div>
+                    </div>
+                    {{-- <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="input1" class="form-label">Course Intro Video</label>
+                            <input type="file" name="video" class="form-control" accept="video/mp4,v ideo/webm">
+                        </div>
+                    </div> --}}
+                    <div class="col-md-12 mt-2">
+                        <div class="d-md-flex d-grid align-items-center gap-3">
+                            <button type="submit" class="btn btn-primary px-4">Update Changes</button>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{-- //End Main Course Image Update --}}
+
+
     {{-- Category by Subctegory show --}}
     <script type="text/javascript">
         $(document).ready(function() {
