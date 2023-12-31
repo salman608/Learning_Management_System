@@ -98,6 +98,7 @@ Route::middleware(['auth', 'roles:instructor'])->group(function () {
         Route::post('update/course', 'UpdateCourse')->name('update.course');
         Route::post('update/course/image', 'UpdateCourseImage')->name('update.course.image');
         Route::post('update/course/video', 'UpdateCoursevideo')->name('update.course.video');
+        Route::post('update/course/goal', 'UpdateCourseGoal')->name('update.course.goal');
     });
 }); //end admin middleware
 Route::get('/instructor/login', [InstructorController::class, 'InstructorLogin'])->name('instructor.login');
