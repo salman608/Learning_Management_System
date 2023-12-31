@@ -20,6 +20,31 @@
                     </div>
                 </div>
 
+                {{-- Add Section and Lecture start --}}
+                @foreach ($section as $key => $item)
+                    <div class="container">
+                        <div class="main-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        <div class="card-body p-4 d-flex justify-content-between">
+                                            <h6>{{ $item->section_title }}</h6>
+                                            <div class="d-flex justify-content-between align-item-center">
+                                                <button type="submit" class="btn btn-danger px-2 ms-auto">Delete
+                                                    Section</button>&nbsp
+
+                                                <a href="" class="btn btn-primary">Add Laeture</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+
+                {{-- Add Section and Lecture End --}}
+
             </div>
         </div>
     </div>

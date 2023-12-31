@@ -266,7 +266,8 @@ class CourseController extends Controller
     public function AddCourseLecture($id)
     {
         $course = Course::find($id);
-        return view('instructor.courses.section.add_course_lecture', compact('course'));
+        $section = CourseSection::where('course_id', $id)->latest()->get();
+        return view('instructor.courses.section.add_course_lecture', compact('course', 'section'));
     }
 
     public function AddCourseSection(Request $request)
@@ -278,7 +279,7 @@ class CourseController extends Controller
         ]);
 
         $notification = array(
-            'message' => "Section Title Inserted Successfully!",
+            'message' => "Course Section Title Inserted Successfully!",
             'alert-type' => "success"
         );
         return redirect()->back()->with($notification);
