@@ -179,12 +179,41 @@
                                 class="p-1 bg-dark" width="100">
                         </div>
                     </div>
-                    {{-- <div class="row">
-                        <div class="form-group col-md-12">
-                            <label for="input1" class="form-label">Course Intro Video</label>
-                            <input type="file" name="video" class="form-control" accept="video/mp4,v ideo/webm">
+
+                    <div class="col-md-12 mt-2">
+                        <div class="d-md-flex d-grid align-items-center gap-3">
+                            <button type="submit" class="btn btn-primary px-4">Update Changes</button>
+
                         </div>
-                    </div> --}}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{-- //End Main Course Image Update --}}
+
+    {{-- //Start Main Course Image Update --}}
+    <div class="page-content">
+        <div class="card">
+            <div class="card-body">
+                <form action="{{ route('update.course.video') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="vid" value="{{ $course->id }}">
+                    <input type="hidden" name="old_vid" value="{{ $course->video }}">
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            <label for="image" class="form-label">Course Image</label>
+                            <input type="file" name="video" class="form-control" id="image"
+                                accept="video/mp4">
+                        </div>
+                        <div class="col-md-4">
+
+                            <video width="300" height="180" controls>
+                                <source src="{{ asset($course->video) }}" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
                     <div class="col-md-12 mt-2">
                         <div class="d-md-flex d-grid align-items-center gap-3">
                             <button type="submit" class="btn btn-primary px-4">Update Changes</button>
