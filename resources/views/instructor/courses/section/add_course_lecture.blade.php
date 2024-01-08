@@ -41,17 +41,19 @@
                                         </div>
                                         <div class="courseHide" id="lectureContainer{{ $key }}">
                                             <div class="container">
-                                                <div
-                                                    class="lectureDiv mb-3 d-flex align-items-center justify-content-between">
+                                                @foreach ($item->lectures as $lecture)
+                                                    <div
+                                                        class="lectureDiv mb-3 d-flex align-items-center justify-content-between">
 
-                                                    <div>
-                                                        <strong>Lecture Title</strong>
+                                                        <div>
+                                                            <strong>{{ $loop->iteration }}.{{ $lecture->lecture_title }}</strong>
+                                                        </div>
+                                                        <div class="btn-group">
+                                                            <a href="" class="btn btn-sm btn-info">Edit</a>
+                                                            <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                                        </div>
                                                     </div>
-                                                    <div class="btn-group">
-                                                        <a href="" class="btn btn-sm btn-info">Edit</a>
-                                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
-                                                    </div>
-                                                </div>
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
