@@ -363,9 +363,7 @@
                     selling_price: {
                         required: true,
                     },
-                    discount_price: {
-                        required: true,
-                    },
+
                     duration: {
                         required: true,
                     },
@@ -407,9 +405,7 @@
                     selling_price: {
                         required: 'Please Enter Course Price',
                     },
-                    discount_price: {
-                        required: 'Please Enter Course Discount',
-                    },
+
                     duration: {
                         required: 'Please Enter Course Duration',
                     },
