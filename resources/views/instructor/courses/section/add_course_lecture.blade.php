@@ -31,8 +31,14 @@
                                         <div class="card-body p-4 d-flex justify-content-between">
                                             <h6>{{ $item->section_title }}</h6>
                                             <div class="d-flex justify-content-between align-item-center">
-                                                <button type="submit" class="btn btn-danger px-2 ms-auto">Delete
-                                                    Section</button>&nbsp
+                                                <form action="{{ route('delete.section', ['id' => $item->id]) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-danger px-2 ms-auto">Delete
+                                                        Section</button>&nbsp;
+                                                </form>
+
+
 
                                                 <a class="btn btn-primary"
                                                     onclick="addLectureDiv({{ $course->id }},{{ $item->id }},'lectureContainer{{ $key }}')"
