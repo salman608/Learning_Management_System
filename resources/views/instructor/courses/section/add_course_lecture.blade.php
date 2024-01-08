@@ -151,7 +151,9 @@
                     console.log(data);
                     lectureContainer.style.display = 'none';
                     location.reload();
+
                     // Start Message
+
                     const Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',
@@ -165,6 +167,7 @@
                             type: 'success',
                             title: data.success,
                         })
+
                     } else {
 
                         Toast.fire({
@@ -172,6 +175,7 @@
                             title: data.error,
                         })
                     }
+
                     // End Message
                 })
                 .catch(error => {
