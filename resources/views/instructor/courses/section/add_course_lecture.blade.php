@@ -1,5 +1,6 @@
 @extends('instructor.instructor_dashboard')
 @section('instructor')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <div class="page-content">
         <div class="row">
             <div class="col-12">
@@ -33,7 +34,24 @@
                                                 <button type="submit" class="btn btn-danger px-2 ms-auto">Delete
                                                     Section</button>&nbsp
 
-                                                <a href="" class="btn btn-primary">Add Laeture</a>
+                                                <a class="btn btn-primary"
+                                                    onclick="addLectureDiv({{ $course->id }},{{ $item->id }},'lectureContainer{{ $key }}')"
+                                                    id="addLectureBtn($key)">Add Laeture</a>
+                                            </div>
+                                        </div>
+                                        <div class="courseHide" id="lectureContainer{{ $key }}">
+                                            <div class="container">
+                                                <div
+                                                    class="lectureDiv mb-3 d-flex align-items-center justify-content-between">
+
+                                                    <div>
+                                                        <strong>Lecture Title</strong>
+                                                    </div>
+                                                    <div class="btn-group">
+                                                        <a href="" class="btn btn-sm btn-info">Edit</a>
+                                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -75,4 +93,90 @@
             </div>
         </div>
     </div>
+
+
+
+
+    <script>
+        function addLectureDiv(courseId, sectionId, containerId) {
+            const lectureContainer = document.getElementById(containerId);
+
+            const newLectureDiv = document.createElement('div');
+            newLectureDiv.classList.add('lectureDiv', 'mb-3');
+            newLectureDiv.innerHTML = `
+            <div class="container">
+            <h6>Lecture Title </h6>
+            <input type="text" class="form-control" placeholder="Enter Lecture Title">
+            <textarea class="form-control mt-2" placeholder="Enter Lecture Content"  ></textarea>
+            <h6 class="mt-3">Add Video Url</h6>
+            <input type="text" name="url" class="form-control" placeholder="Add URL">
+            <button class="btn btn-primary mt-3" onclick="saveLecture('${courseId}',${sectionId},'${containerId}')" >Save Lecture</button>
+            <button class="btn btn-secondary mt-3" onclick="hideLectureContainer('${containerId}')">Cancel</button>
+        </div> `;
+
+            lectureContainer.appendChild(newLectureDiv);
+
+        }
+
+        function hideLectureContainer(containerId) {
+            const lectureContainer = document.getElementById(containerId);
+            lectureContainer.style.display = 'none';
+            location.reload();
+        }
+    </script>
+
+    <script>
+        function saveLecture(courseId, sectionId, containerId) {
+            const lectureContainer = document.getElementById(containerId);
+            const lectureTitle = lectureContainer.querySelector('input[type="text"]').value;
+            const lectureContent = lectureContainer.querySelector('textarea').value;
+            const lectureUrl = lectureContainer.querySelector('input[name="url"]').value;
+
+            fetch('/save-lecture', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    },
+                    body: JSON.stringify({
+                        course_id: courseId,
+                        section_id: sectionId,
+                        lecture_title: lectureTitle,
+                        lecture_url: lectureUrl,
+                        content: lectureContent,
+                    }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    lectureContainer.style.display = 'none';
+                    location.reload();
+                    // Start Message
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 6000
+                    })
+                    if ($.isEmptyObject(data.error)) {
+
+                        Toast.fire({
+                            type: 'success',
+                            title: data.success,
+                        })
+                    } else {
+
+                        Toast.fire({
+                            type: 'error',
+                            title: data.error,
+                        })
+                    }
+                    // End Message
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        }
+    </script>
 @endsection
