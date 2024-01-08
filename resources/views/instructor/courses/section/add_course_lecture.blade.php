@@ -41,15 +41,16 @@
                                         </div>
                                         <div class="courseHide" id="lectureContainer{{ $key }}">
                                             <div class="container">
-                                                @foreach ($item->lectures as $lecture)
+                                                @foreach ($item->lectures as $clecture)
                                                     <div
                                                         class="lectureDiv mb-3 d-flex align-items-center justify-content-between">
 
                                                         <div>
-                                                            <strong>{{ $loop->iteration }}.{{ $lecture->lecture_title }}</strong>
+                                                            <strong>{{ $loop->iteration }}.{{ $clecture->lecture_title }}</strong>
                                                         </div>
                                                         <div class="btn-group">
-                                                            <a href="" class="btn btn-sm btn-info">Edit</a>
+                                                            <a href="{{ route('edit.lecture', ['id' => $clecture->id]) }}"
+                                                                class="btn btn-sm btn-info">Edit</a>
                                                             <a href="" class="btn btn-sm btn-danger">Delete</a>
                                                         </div>
                                                     </div>
