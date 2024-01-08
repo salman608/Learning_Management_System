@@ -319,5 +319,15 @@ class CourseController extends Controller
             'alert-type' => "success"
         );
         return redirect()->back()->with($notification);
+    } //end
+
+    public function DeleteLecture($id)
+    {
+        CourseLecture::find($id)->delete();
+        $notification = array(
+            'message' => "Course Lecture Deleted Successfully!",
+            'alert-type' => "success"
+        );
+        return redirect()->back()->with($notification);
     }
 }

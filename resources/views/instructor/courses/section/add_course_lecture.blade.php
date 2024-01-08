@@ -51,7 +51,8 @@
                                                         <div class="btn-group">
                                                             <a href="{{ route('edit.lecture', ['id' => $clecture->id]) }}"
                                                                 class="btn btn-sm btn-info">Edit</a>
-                                                            <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                                            <a href="{{ route('delete.lecture', ['id' => $clecture->id]) }}"
+                                                                class="btn btn-sm btn-danger" id="delete">Delete</a>
                                                         </div>
                                                     </div>
                                                 @endforeach
