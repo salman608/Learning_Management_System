@@ -1,8 +1,8 @@
 @extends('frontend.master')
 @section('home')
     <!-- ================================
-                                                                                    START BREADCRUMB AREA
-                                                                                ================================= -->
+                                                                                                                                                    START BREADCRUMB AREA
+                                                                                                                                                ================================= -->
     <section class="breadcrumb-area pt-50px pb-50px bg-white pattern-bg">
         <div class="container">
             <div class="col-lg-8 mr-auto">
@@ -85,12 +85,12 @@
         </div><!-- end container -->
     </section><!-- end breadcrumb-area -->
     <!-- ================================
-                                                                                    END BREADCRUMB AREA
-                                                                                ================================= -->
+                                                                                                                                                    END BREADCRUMB AREA
+                                                                                                                                                ================================= -->
 
     <!--======================================
-                                                                                        START COURSE DETAILS AREA
-                                                                                ======================================-->
+                                                                                                                                                        START COURSE DETAILS AREA
+                                                                                                                                                ======================================-->
     <section class="course-details-area pb-20px">
         <div class="container">
             <div class="row">
@@ -147,173 +147,72 @@
                                 <span class="collapse-btn-show">Show less<i class="la la-angle-up ml-1 fs-14"></i></span>
                             </a>
                         </div><!-- end course-overview-card -->
+                        @php
+                            $lecture = App\Models\CourseLecture::where('course_id', $course->id)->get();
+                        @endphp
                         <div class="course-overview-card">
                             <div class="curriculum-header d-flex align-items-center justify-content-between pb-4">
                                 <h3 class="fs-24 font-weight-semi-bold">Course content</h3>
                                 <div class="curriculum-duration fs-15">
                                     <span class="curriculum-total__text mr-2"><strong
-                                            class="text-black font-weight-semi-bold">Total:</strong> 17 lectures</span>
+                                            class="text-black font-weight-semi-bold">Total:</strong>
+                                        {{ count($lecture) }} lectures</span>
                                     <span class="curriculum-total__hours"><strong
-                                            class="text-black font-weight-semi-bold">Total hours:</strong> 02:35:47</span>
+                                            class="text-black font-weight-semi-bold">Total hours:</strong>
+                                        {{ $course->duration }}</span>
                                 </div>
                             </div>
+
+                            @php
+                                $section = App\Models\CourseSection::where('course_id', $course->id)
+                                    ->orderBy('id', 'ASC')
+                                    ->get();
+                            @endphp
                             <div class="curriculum-content">
                                 <div id="accordion" class="generic-accordion">
-                                    <div class="card">
-                                        <div class="card-header" id="headingOne">
-                                            <button class="btn btn-link d-flex align-items-center justify-content-between"
-                                                data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
-                                                aria-controls="collapseOne">
-                                                <i class="la la-plus"></i>
-                                                <i class="la la-minus"></i>
-                                                Course introduction
-                                                <span class="fs-15 text-gray font-weight-medium">6 lectures</span>
-                                            </button>
-                                        </div><!-- end card-header -->
-                                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                                            data-parent="#accordion">
-                                            <div class="card-body">
-                                                <ul class="generic-list-item">
-                                                    <li>
-                                                        <a href="#"
-                                                            class="d-flex align-items-center justify-content-between text-color"
-                                                            data-toggle="modal" data-target="#previewModal">
-                                                            <span>
-                                                                <i class="la la-play-circle mr-1"></i>
-                                                                Introductory words
-                                                                <span class="ribbon ml-2 fs-13">Preview</span>
-                                                            </span>
-                                                            <span>02:27</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <div class="d-flex align-items-center justify-content-between">
-                                                            <span>
-                                                                <i class="la la-play-circle mr-1"></i>
-                                                                Remaster in Progress
-                                                            </span>
-                                                            <span>03:09</span>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="d-flex align-items-center justify-content-between">
-                                                            <span>
-                                                                <i class="la la-play-circle mr-1"></i>
-                                                                Video Quality
-                                                            </span>
-                                                            <span>01:16</span>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="d-flex align-items-center justify-content-between">
-                                                            <span>
-                                                                <i class="la la-play-circle mr-1"></i>
-                                                                Important Tip - Source Code
-                                                            </span>
-                                                            <span>02:07</span>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div><!-- end card-body -->
-                                        </div><!-- end collapse -->
-                                    </div><!-- end card -->
-                                    <div class="card">
-                                        <div class="card-header" id="headingTwo">
-                                            <button
-                                                class="btn btn-link collapsed d-flex align-items-center justify-content-between"
-                                                data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
-                                                aria-controls="collapseTwo">
-                                                <i class="la la-plus"></i>
-                                                <i class="la la-minus"></i>
-                                                Software tools setup
-                                                <span class="fs-15 text-gray font-weight-medium">6 lectures</span>
-                                            </button>
-                                        </div>
-                                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-                                            data-parent="#accordion">
-                                            <div class="card-body">
-                                                <ul class="generic-list-item">
-                                                    <li>
-                                                        <div class="d-flex align-items-center justify-content-between">
-                                                            <span>
-                                                                <i class="la la-play-circle mr-1"></i>
-                                                                Biggest Tip to Succeed as a Java Programmer
-                                                            </span>
-                                                            <span>02:27</span>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="d-flex align-items-center justify-content-between">
-                                                            <span>
-                                                                <i class="la la-file mr-1"></i>
-                                                                ** IMPORTANT ** - Configuring IntelliJ IDEA
-                                                            </span>
-                                                            <span>00:16</span>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="d-flex align-items-center justify-content-between">
-                                                            <span>
-                                                                <i class="la la-play-circle mr-1"></i>
-                                                                Video Quality
-                                                            </span>
-                                                            <span>01:16</span>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="d-flex align-items-center justify-content-between">
-                                                            <span>
-                                                                <i class="la la-play-circle mr-1"></i>
-                                                                Important Tip - Source Code
-                                                            </span>
-                                                            <span>02:07</span>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="d-flex align-items-center justify-content-between">
-                                                            <span>
-                                                                <i class="la la-code mr-1"></i>
-                                                                Interface
-                                                            </span>
-                                                            <span>1 question</span>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div><!-- end card-body -->
-                                        </div>
-                                    </div><!-- end card -->
-                                    <div class="card">
-                                        <div class="card-header" id="headingThree">
-                                            <button
-                                                class="btn btn-link collapsed d-flex align-items-center justify-content-between"
-                                                data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
-                                                aria-controls="collapseThree">
-                                                <i class="la la-plus"></i>
-                                                <i class="la la-minus"></i>
-                                                Conclusion
-                                                <span class="fs-15 text-gray font-weight-medium">1 lectures</span>
-                                            </button>
-                                        </div>
-                                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                                            data-parent="#accordion">
-                                            <div class="card-body">
-                                                <ul class="generic-list-item">
-                                                    <li>
-                                                        <a href="#"
-                                                            class="d-flex align-items-center justify-content-between text-color"
-                                                            data-toggle="modal" data-target="#previewModal">
-                                                            <span>
-                                                                <i class="la la-play-circle mr-1"></i>
-                                                                Conclusion
-                                                                <span class="ribbon ml-2 fs-13">Watch</span>
-                                                            </span>
-                                                            <span>02:27</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div><!-- end card-body -->
-                                        </div><!-- end collapse -->
-                                    </div><!-- end card -->
+                                    @foreach ($section as $sec)
+                                        @php
+                                            $lecture = App\Models\CourseLecture::where('section_id', $sec->id)
+                                            ->get();
+                                        @endphp
+                                        <div class="card">
+                                            <div class="card-header" id="heading{{ $sec->id }}">
+                                                <button
+                                                    class="btn btn-link d-flex align-items-center justify-content-between"
+                                                    data-toggle="collapse" data-target="#collapse{{ $sec->id }}"
+                                                    aria-expanded="true" aria-controls="collapse{{ $sec->id }}">
+                                                    <i class="la la-plus"></i>
+                                                    <i class="la la-minus"></i>
+                                                    {{ $sec->section_title }}
+                                                    <span class="fs-15 text-gray font-weight-medium">{{ count($lecture) }}
+                                                        lectures</span>
+                                                </button>
+                                            </div><!-- end card-header -->
+                                            <div id="collapse{{ $sec->id }}" class="collapse show"
+                                                aria-labelledby="heading{{ $sec->id }}" data-parent="#accordion">
+                                                <div class="card-body">
+                                                    <ul class="generic-list-item">
+                                                        @foreach ($lecture as $lect)
+                                                            <li>
+                                                                <div
+                                                                    class="d-flex align-items-center justify-content-between">
+                                                                    <span>
+                                                                        <i class="la la-play-circle mr-1"></i>
+                                                                        {{ $lect->lecture_title }}
+                                                                    </span>
+                                                                    <span>03:09</span>
+                                                                </div>
+                                                            </li>
+                                                        @endforeach
+
+
+
+                                                    </ul>
+                                                </div><!-- end card-body -->
+                                            </div><!-- end collapse -->
+                                        </div><!-- end card -->
+                                    @endforeach
+
                                 </div><!-- end generic-accordion -->
                             </div><!-- end curriculum-content -->
                         </div><!-- end course-overview-card -->
@@ -944,12 +843,12 @@
         </div><!-- end container -->
     </section><!-- end course-details-area -->
     <!--======================================
-                                                                                        END COURSE DETAILS AREA
-                                                                                ======================================-->
+                                                                                                                                                        END COURSE DETAILS AREA
+                                                                                                                                                ======================================-->
 
     <!--======================================
-                                                                                        START RELATED COURSE AREA
-                                                                                ======================================-->
+                                                                                                                                                        START RELATED COURSE AREA
+                                                                                                                                                ======================================-->
     <section class="related-course-area bg-gray pt-60px pb-60px">
         <div class="container">
             <div class="related-course-wrap">
@@ -1093,12 +992,12 @@
         </div><!-- end container -->
     </section><!-- end related-course-area -->
     <!--======================================
-                                                                                        END RELATED COURSE AREA
-                                                                                ======================================-->
+                                                                                                                                                        END RELATED COURSE AREA
+                                                                                                                                                ======================================-->
 
     <!--======================================
-                                                                                        START CTA AREA
-                                                                                ======================================-->
+                                                                                                                                                        START CTA AREA
+                                                                                                                                                ======================================-->
     <section class="cta-area pt-60px pb-60px position-relative overflow-hidden">
         <span class="stroke-shape stroke-shape-1"></span>
         <span class="stroke-shape stroke-shape-2"></span>
@@ -1143,8 +1042,8 @@
         </div><!-- end container -->
     </section><!-- end cta-area -->
     <!--======================================
-                                                                                        END CTA AREA
-                                                                                ======================================-->
+                                                                                                                                                        END CTA AREA
+                                                                                                                                                ======================================-->
 
     <!-- start scroll top -->
     <div id="scroll-top">
