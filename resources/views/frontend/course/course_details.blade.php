@@ -1,24 +1,37 @@
 @extends('frontend.master')
 @section('home')
     <!-- ================================
-                START BREADCRUMB AREA
-            ================================= -->
+                                                                    START BREADCRUMB AREA
+                                                                ================================= -->
     <section class="breadcrumb-area pt-50px pb-50px bg-white pattern-bg">
         <div class="container">
             <div class="col-lg-8 mr-auto">
                 <div class="breadcrumb-content">
                     <ul class="generic-list-item generic-list-item-arrow d-flex flex-wrap align-items-center">
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="#">Development</a></li>
-                        <li><a href="#">Java</a></li>
+                        <li><a href="#">{{ $course['category']['category_name'] }}</a></li>
+                        <li><a href="#">{{ $course['subcategory']['subcategory_name'] }}</a></li>
                     </ul>
                     <div class="section-heading">
-                        <h2 class="section__title">Java Programming Masterclass for Software Developers</h2>
-                        <p class="section__desc pt-2 lh-30">Learn Java In This Course And Become a Computer Programmer.
-                            Obtain valuable Core Java Skills And Java Certification</p>
+                        <h2 class="section__title">{{ $course->course_name }}</h2>
+                        <p class="section__desc pt-2 lh-30">{{ $course->course_title }}</p>
                     </div><!-- end section-heading -->
                     <div class="d-flex flex-wrap align-items-center pt-3">
-                        <h6 class="ribbon ribbon-lg mr-2 bg-3 text-white">Bestseller</h6>
+                        @if ($course->bestseller == 1)
+                            <h6 class="ribbon ribbon-lg mr-2 bg-3 text-white">Bestseller</h6>
+                        @else
+                        @endif
+                        @if ($course->highestrated == 1)
+                            <h6 class="ribbon ribbon-lg mr-2 bg-3 text-white">HighestRated</h6>
+                        @else
+                        @endif
+                        @if ($course->featured == 1)
+                            <h6 class="ribbon ribbon-lg mr-2 bg-3 text-white">Featured</h6>
+                        @else
+                        @endif
+
+
+
                         <div class="rating-wrap d-flex flex-wrap align-items-center">
                             <div class="review-stars">
                                 <span class="rating-number">4.4</span>
@@ -32,8 +45,8 @@
                             <span class="student-total pl-2">540,815 students</span>
                         </div>
                     </div><!-- end d-flex -->
-                    <p class="pt-2 pb-1">Created by <a href="teacher-detail.html" class="text-color hover-underline">Tim
-                            Buchalka</a></p>
+                    <p class="pt-2 pb-1">Created by <a href="teacher-detail.html"
+                            class="text-color hover-underline">{{ $course['user']['name'] }}</a></p>
                     <div class="d-flex flex-wrap align-items-center">
                         <p class="pr-3 d-flex align-items-center">
                             <svg class="svg-icon-color-gray mr-1" width="16px" viewBox="0 0 24 24">
@@ -41,7 +54,7 @@
                                     d="M23 12l-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68L23 12zm-10 5h-2v-2h2v2zm0-4h-2V7h2v6z">
                                 </path>
                             </svg>
-                            Last updated 2 Jan,2021
+                            Last updated {{ $course->created_at->format('M d Y') }}
                         </p>
                         <p class="pr-3 d-flex align-items-center">
                             <svg class="svg-icon-color-gray mr-1" width="16px" viewBox="0 0 24 24">
@@ -72,12 +85,12 @@
         </div><!-- end container -->
     </section><!-- end breadcrumb-area -->
     <!-- ================================
-                END BREADCRUMB AREA
-            ================================= -->
+                                                                    END BREADCRUMB AREA
+                                                                ================================= -->
 
     <!--======================================
-                    START COURSE DETAILS AREA
-            ======================================-->
+                                                                        START COURSE DETAILS AREA
+                                                                ======================================-->
     <section class="course-details-area pb-20px">
         <div class="container">
             <div class="row">
@@ -959,12 +972,12 @@
         </div><!-- end container -->
     </section><!-- end course-details-area -->
     <!--======================================
-                    END COURSE DETAILS AREA
-            ======================================-->
+                                                                        END COURSE DETAILS AREA
+                                                                ======================================-->
 
     <!--======================================
-                    START RELATED COURSE AREA
-            ======================================-->
+                                                                        START RELATED COURSE AREA
+                                                                ======================================-->
     <section class="related-course-area bg-gray pt-60px pb-60px">
         <div class="container">
             <div class="related-course-wrap">
@@ -1108,12 +1121,12 @@
         </div><!-- end container -->
     </section><!-- end related-course-area -->
     <!--======================================
-                    END RELATED COURSE AREA
-            ======================================-->
+                                                                        END RELATED COURSE AREA
+                                                                ======================================-->
 
     <!--======================================
-                    START CTA AREA
-            ======================================-->
+                                                                        START CTA AREA
+                                                                ======================================-->
     <section class="cta-area pt-60px pb-60px position-relative overflow-hidden">
         <span class="stroke-shape stroke-shape-1"></span>
         <span class="stroke-shape stroke-shape-2"></span>
@@ -1158,8 +1171,8 @@
         </div><!-- end container -->
     </section><!-- end cta-area -->
     <!--======================================
-                    END CTA AREA
-            ======================================-->
+                                                                        END CTA AREA
+                                                                ======================================-->
 
     <!-- start scroll top -->
     <div id="scroll-top">
@@ -1185,7 +1198,7 @@
                         <span class="success-message">Copied!</span>
                         <div class="input-group">
                             <input type="text" class="form-control form--control copy-input pl-3"
-                                value="https://www.aduca.com/share/101WxMB0oac1hVQQ==/">
+                                value="http://127.0.0.1:8000/{{ Request::path() }}">
                             <div class="input-group-append">
                                 <button class="btn theme-btn theme-btn-sm copy-btn shadow-none"><i
                                         class="la la-copy mr-1"></i> Copy</button>
