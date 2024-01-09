@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CourseController;
+use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -113,4 +114,7 @@ Route::middleware(['auth', 'roles:instructor'])->group(function () {
         Route::post('delete/section/{id}', 'DeleteSection')->name('delete.section');
     });
 }); //end admin middleware
+
+//  All  Frontend route
 Route::get('/instructor/login', [InstructorController::class, 'InstructorLogin'])->name('instructor.login');
+Route::get('/course/details/{id}/{slug}', [IndexController::class, 'CourseDetails']);
