@@ -41,6 +41,7 @@ class WishListController extends Controller
     public function GetWishlistCourse()
     {
         $wishlist = Wishlist::with('course')->where('user_id', Auth::id())->latest()->get();
-        return response()->json(['wishlist' => $wishlist]);
+        $wishQty = Wishlist::count();
+        return response()->json(['wishlist' => $wishlist, 'wishQty' => $wishQty]);
     }
 }
