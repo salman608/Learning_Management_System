@@ -30,4 +30,17 @@ class WishListController extends Controller
             return response()->json(['error' => 'At First Login Your Account']);
         }
     } // End Method
+
+
+    public function AllWishlist()
+    {
+        return view('frontend.wishlist.all_wishlist');
+    }
+
+
+    public function GetWishlistCourse()
+    {
+        $wishlist = Wishlist::with('course')->where('user_id', Auth::id())->latest()->get();
+        return response()->json(['wishlist' => $wishlist]);
+    }
 }

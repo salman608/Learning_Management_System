@@ -35,7 +35,15 @@ Route::middleware('auth')->group(function () {
     Route::post('user/profile/update', [UserController::class, 'UserProfileUpdate'])->name('user.profile.update');
     Route::get('user/change/password', [UserController::class, 'UserChangePassword'])->name('user.change.password');
     Route::post('user/password/update', [UserController::class, 'UserPasswordUpdate'])->name('user.password.update');
+
+    //User Wish list
+    Route::controller(WishListController::class)->group(function () {
+        Route::get('user/wishlist', 'AllWishlist')->name('user.wishlist');
+        Route::get('/get-wishlist-course/', 'GetWishlistCourse');
+    });
 });
+
+// End Auth Meddlewire
 
 require __DIR__ . '/auth.php';
 
