@@ -90,5 +90,17 @@ class CartController extends Controller
     {
 
         return view('frontend.mycart.view_mycart');
-    }
+    } //end
+
+    public function GetCartCourse()
+    {
+        $carts = Cart::content();
+        $cartTotal = Cart::total();
+        $cartQty = Cart::count();
+        return response()->json(array(
+            'carts' => $carts,
+            'cartTotal' => $cartTotal,
+            'cartQty' => $cartQty,
+        ));
+    } //End
 }
