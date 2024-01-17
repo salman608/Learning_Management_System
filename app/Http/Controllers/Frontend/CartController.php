@@ -64,7 +64,7 @@ class CartController extends Controller
             'cartTotal' => $cartTotal,
             'cartQty' => $cartQty,
         ));
-    }
+    } //End
 
     public function AddMiniCart()
     {
@@ -76,7 +76,7 @@ class CartController extends Controller
             'cartTotal' => $cartTotal,
             'cartQty' => $cartQty,
         ));
-    }
+    } //End
 
     public function RemoveMiniCart($rowId)
     {
@@ -84,4 +84,11 @@ class CartController extends Controller
         Cart::remove($rowId);
         return response()->json(['success' => 'Course Remove From Cart']);
     } // End Method
+
+
+    public function MyCart()
+    {
+
+        return view('frontend.mycart.view_mycart');
+    }
 }

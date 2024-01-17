@@ -146,3 +146,9 @@ Route::get('/cart/data/', [CartController::class, 'CartData']);
 //Get Data From Mini Csrt
 Route::get('/course/mini/cart/', [CartController::class, 'AddMiniCart']);
 Route::get('/minicart/course/remove/{rowId}', [CartController::class, 'RemoveMiniCart']);
+
+
+//  All  Cart route
+Route::controller(CartController::class)->group(function () {
+    Route::get('/mycart', 'MyCart')->name('mycart');
+});
