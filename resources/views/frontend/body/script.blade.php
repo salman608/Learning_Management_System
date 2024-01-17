@@ -20,7 +20,7 @@
                     toast: true,
                     position: 'top-end',
                     showConfirmButton: false,
-                    timer: 6000
+                    timer: 3000
                 })
                 if ($.isEmptyObject(data.error)) {
 
@@ -115,7 +115,7 @@
                     toast: true,
                     position: 'top-end',
                     showConfirmButton: false,
-                    timer: 6000
+                    timer: 3000
                 })
                 if ($.isEmptyObject(data.error)) {
 
@@ -159,7 +159,7 @@
                     toast: true,
                     position: 'top-end',
                     showConfirmButton: false,
-                    timer: 6000
+                    timer: 3000
                 })
                 if ($.isEmptyObject(data.error)) {
 
@@ -289,7 +289,7 @@
 
 
                     <td>
-                        <button type="button" class="icon-element icon-element-xs shadow-sm border-0" data-toggle="tooltip" data-placement="top" title="Remove">
+                        <button type="button" class="icon-element icon-element-xs shadow-sm border-0" data-toggle="tooltip" data-placement="top" title="Remove" id="${value.rowId}" onclick="cartRemove(this.id)">
                             <i class="la la-times"></i>
                         </button>
                     </td>
@@ -301,5 +301,42 @@
         })
     }
     cart();
+
+    //  Cart Remove Start
+    function cartRemove(rowId) {
+        $.ajax({
+            type: 'GET',
+            url: '/cart/remove/' + rowId,
+            dataType: 'json',
+            success: function(data) {
+                miniCart();
+                cart();
+                // Start Message
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)) {
+
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success,
+                    })
+                } else {
+
+                    Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error,
+                    })
+                }
+                // End Message
+            }
+        })
+    }
+    // End  Cart Remove
 </script>
 {{-- /// End MyCar paget  // --}}
