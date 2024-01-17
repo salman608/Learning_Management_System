@@ -57,8 +57,8 @@
                                     <td>{{ $item->selling_price }}</td>
 
                                     <td>
-                                        <a href="{{ route('edit.category', $item->id) }}" class="btn btn-sm btn-info"><i
-                                                class="lni lni-eye"></i></a>
+                                        <a href="{{ route('admin.course.details', $item->id) }}"
+                                            class="btn btn-sm btn-info"><i class="lni lni-eye"></i></a>
 
                                     </td>
 
@@ -80,6 +80,8 @@
             </div>
         </div>
     </div>
+
+
 
     <script>
         $(document).ready(function() {
