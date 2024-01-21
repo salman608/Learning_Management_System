@@ -70,10 +70,10 @@
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class="bx bx-repeat"></i>
                 </div>
-                <div class="menu-title">Content</div>
+                <div class="menu-title">Manage Coupon</div>
             </a>
             <ul>
-                <li> <a href="content-grid-system.html"><i class='bx bx-radio-circle'></i>Grid System</a>
+                <li> <a href="{{ route('admin.all.coupon') }}"><i class='bx bx-radio-circle'></i>All Coupon</a>
                 </li>
                 <li> <a href="content-typography.html"><i class='bx bx-radio-circle'></i>Typography</a>
                 </li>
