@@ -15,7 +15,7 @@
             </div>
             <div class="ms-auto">
                 <div class="btn-group">
-                    <a href="{{ route('add.category') }}" class="btn btn-primary">+ Add Coupon</a>
+                    <a href="{{ route('admin.add.coupon') }}" class="btn btn-primary">+ Add Coupon</a>
                 </div>
             </div>
         </div>
@@ -45,13 +45,12 @@
                                         {{ $item->coupon_name }}
                                     </td>
                                     <td>{{ $item->coupon_discount }}%</td>
-                                    <td>{{ $item->coupon_validity }}</td>
                                     <td>{{ Carbon\Carbon::parse($item->coupon_validity)->format('D,d F Y') }}</td>
                                     <td>
                                         @if ($item->coupon_validity >= Carbon\Carbon::now()->format('Y-m-d'))
-                                            <span class="badge bg-success">Valid</span>
+                                            <span class="badge bg-success">Coupon Valid</span>
                                         @else
-                                            <span class="badge bg-danger">InValid</span>
+                                            <span class="badge bg-danger">Coupon Invalid</span>
                                         @endif
                                     </td>
 

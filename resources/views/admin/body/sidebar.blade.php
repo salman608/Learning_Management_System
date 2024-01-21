@@ -75,7 +75,7 @@
             <ul>
                 <li> <a href="{{ route('admin.all.coupon') }}"><i class='bx bx-radio-circle'></i>All Coupon</a>
                 </li>
-                <li> <a href="content-typography.html"><i class='bx bx-radio-circle'></i>Typography</a>
+                <li> <a href="{{ route('admin.add.coupon') }}"><i class='bx bx-radio-circle'></i>Add Coupon</a>
                 </li>
 
             </ul>
