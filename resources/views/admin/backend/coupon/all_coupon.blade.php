@@ -55,9 +55,9 @@
                                     </td>
 
                                     <td>
-                                        <a href="{{ route('edit.category', $item->id) }}"
+                                        <a href="{{ route('admin.edit.coupon', $item->id) }}"
                                             class="btn btn-sm btn-info px-5">Edit</a>
-                                        <a href="{{ route('delete.category', $item->id) }}"
+                                        <a href="{{ route('admin.delete.coupon', $item->id) }}"
                                             class="btn btn-sm btn-danger px-5" id="delete">Delete</a>
                                     </td>
 
