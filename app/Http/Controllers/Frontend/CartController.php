@@ -151,5 +151,12 @@ class CartController extends Controller
                 'total' => Cart::total(),
             ));
         }
-    }
+    } //End
+
+
+    public function CouponRemove()
+    {
+        Session::forget('coupon');
+        return response()->json(['success' => 'Coupon Rwemove Successfully']);
+    } //End
 }
