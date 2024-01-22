@@ -311,6 +311,7 @@
             success: function(data) {
                 miniCart();
                 cart();
+                couponCalculation();
                 // Start Message
                 const Toast = Swal.mixin({
                     toast: true,
