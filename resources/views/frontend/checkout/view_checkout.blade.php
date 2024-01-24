@@ -1,8 +1,8 @@
 @extends('frontend.master')
 @section('home')
     <!-- ================================
-                                                                                                                        START BREADCRUMB AREA
-                                                                                                                    ================================= -->
+                                                                                                                                                                                START BREADCRUMB AREA
+                                                                                                                                                                            ================================= -->
     <section class="breadcrumb-area section-padding img-bg-2">
         <div class="overlay"></div>
         <div class="container">
@@ -20,12 +20,12 @@
         </div><!-- end container -->
     </section><!-- end breadcrumb-area -->
     <!-- ================================
-                                                                                                                        END BREADCRUMB AREA
-                                                                                                                    ================================= -->
+                                                                                                                                                                                END BREADCRUMB AREA
+                                                                                                                                                                            ================================= -->
 
     <!-- ================================
-                                                                                                                           START CONTACT AREA
-                                                                                                                    ================================= -->
+                                                                                                                                                                                   START CONTACT AREA
+                                                                                                                                                                            ================================= -->
     <section class="cart-area section--padding">
         <div class="container">
             <div class="row">
@@ -127,20 +127,36 @@
                         <div class="card-body">
                             <h3 class="card-title fs-22 pb-3">Order Summary</h3>
                             <div class="divider"><span></span></div>
-                            <ul class="generic-list-item generic-list-item-flash fs-15">
-                                <li class="d-flex align-items-center justify-content-between font-weight-semi-bold">
-                                    <span class="text-black">Original price:</span>
-                                    <span>$199.99</span>
-                                </li>
-                                <li class="d-flex align-items-center justify-content-between font-weight-semi-bold">
-                                    <span class="text-black">Coupon discounts:</span>
-                                    <span>-$181.99</span>
-                                </li>
-                                <li class="d-flex align-items-center justify-content-between font-weight-bold">
-                                    <span class="text-black">Total:</span>
-                                    <span>$18.99</span>
-                                </li>
-                            </ul>
+                            @if (Session::has('coupon'))
+                                <ul class="generic-list-item generic-list-item-flash fs-15">
+                                    <li class="d-flex align-items-center justify-content-between font-weight-semi-bold">
+                                        <span class="text-black">SubTotal:</span>
+                                        <span>${{ $cartTotal }}</span>
+                                    </li>
+                                    <li class="d-flex align-items-center justify-content-between font-weight-semi-bold">
+                                        <span class="text-black">Coupon Name:</span>
+                                        <span>{{ Session::get('coupon')['coupon_name'] }} (
+                                            {{ Session::get('coupon')['coupon_discount'] }} %)</span>
+                                    </li>
+                                    <li class="d-flex align-items-center justify-content-between font-weight-semi-bold">
+                                        <span class="text-black">Coupon Discount:</span>
+                                        <span>- ${{ Session::get('coupon')['discount_amount'] }}</span>
+                                    </li>
+                                    <li class="d-flex align-items-center justify-content-between font-weight-bold">
+                                        <span class="text-black">Total:</span>
+                                        <span>${{ Session::get('coupon')['total_amount'] }}</span>
+                                    </li>
+                                </ul>
+                            @else
+                                <ul class="generic-list-item generic-list-item-flash fs-15">
+
+                                    <li class="d-flex align-items-center justify-content-between font-weight-bold">
+                                        <span class="text-black">Total:</span>
+                                        <span>${{ $cartTotal }}</span>
+                                    </li>
+                                </ul>
+                            @endif
+
                             <div class="btn-box border-top border-top-gray pt-3">
                                 <p class="fs-14 lh-22 mb-2">Aduca is required by law to collect applicable transaction
                                     taxes for purchases made in certain tax jurisdictions.</p>
@@ -156,6 +172,6 @@
         </div><!-- end container -->
     </section>
     <!-- ================================
-                                                                                                                           END CONTACT AREA
-                                                                                                                    ================================= -->
+                                                                                                                                                                                   END CONTACT AREA
+                                                                                                                                                                            ================================= -->
 @endsection
